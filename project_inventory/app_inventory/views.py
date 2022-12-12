@@ -12,4 +12,9 @@ def item_edit(request):
 
 def item_create(request):
     return render(request, "items/create.html")
-    
+
+def user_login(request):
+    return render(request, "users/login.html")
+
+def user_register(request):
+    return render(request, "users/register.html")
