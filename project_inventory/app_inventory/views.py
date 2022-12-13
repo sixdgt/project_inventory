@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import ItemCreateForm, UserLoginForm, UserRegisterForm
 
 # Create your views here.
 def item_index(request):
@@ -11,10 +12,16 @@ def item_edit(request):
     return render(request, "items/edit.html")
 
 def item_create(request):
-    return render(request, "items/create.html")
+    form = ItemCreateForm()
+    context = {"form": form}
+    return render(request, "items/create.html", context)
 
 def user_login(request):
-    return render(request, "users/login.html")
+    form = UserLoginForm()
+    context = {"form": form}
+    return render(request, "users/login.html", context)
 
 def user_register(request):
-    return render(request, "users/register.html")
+    form = UserRegisterForm()
+    context = {"form": form}
+    return render(request, "users/register.html", context)
