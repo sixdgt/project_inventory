@@ -8,6 +8,11 @@ Item | CREATE
 <div class="container">
     <h1>Item Create | INVENTORY</h1>
     <hr>
+    {% if msg %}
+    <div class="alert alert-success" role="alert">
+        {{ msg }}
+    </div>
+    {% endif %}
     <div class="card">
         <div class="card-header">
             <h4>Item Detail</h4>
