@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .forms import ItemCreateForm, UserLoginForm, UserRegisterForm
+from datetime import datetime
+from .models import Item, AppUser
 
 # Create your views here.
 def item_index(request):
@@ -14,6 +16,19 @@ def item_edit(request):
 def item_create(request):
     form = ItemCreateForm()
     context = {"form": form}
+    if request.method == "POST":
+        item = Item()
+        user = AppUser.objects.get(id=1)
+        item.title = request.POST.get("title")
+        item.particular = request.POST.get("particular")
+        item.lf = request.POST.get("lf")
+        item.price = request.POST.get("price")
+        item.quantity = request.POST.get("quantity")
+        item.total = request.POST.get("total")
+        item.added_at = datetime.now()
+        item.user = user
+        item.save()
+        # item = Item(title=title, particular=particular)
     return render(request, "items/create.html", context)
 
 def user_login(request):

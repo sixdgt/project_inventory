@@ -13,7 +13,7 @@ Item | CREATE
             <h4>Item Detail</h4>
         </div>
         <div class="card-body">
-            <form action="#">
+            <form action="{% url 'items.create' %}" method="POST">
                 {% csrf_token %}
 
                 {{ form.as_p }}
