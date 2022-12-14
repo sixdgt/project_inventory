@@ -19,7 +19,7 @@
                 <h4>Register</h4>
             </div>
             <div class="card-body">
-                <form action="#">
+                <form action="{% url 'users.register' %}" method="POST">
                     {% csrf_token %}
 
                     {{ form.as_p }}
