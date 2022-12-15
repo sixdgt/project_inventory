@@ -7,5 +7,46 @@ Item | INDEX
 {% block body_content %}
 <div class="container">
     <h1>Item List | INVENTORY</h1>
+    <hr>
+    <a href="{% url 'items.create' %}" class="btn btn-primary mb-2">ADD ITEM</a>
+    <div class="card">
+        <div class="card-header">
+            <h3>Item List</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>S.No</td>
+                        <td>Title</td>
+                        <td>Particular</td>
+                        <td>LF</td>
+                        <td>Quantity</td>
+                        <td>Price</td>
+                        <td>Total</td>
+                        <td>Added At</td>
+                        <td colspan="3">Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for val in item_list %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ val.title }}</td>
+                        <td>{{ val.particular }}</td>
+                        <td>{{ val.lf }}</td>
+                        <td>{{ val.price }}</td>
+                        <td>{{ val.quantity }}</td>
+                        <td>{{ val.total }}</td>
+                        <td>{{ val.added_at }}</td>
+                        <td><a href="{% url 'items.show' val.id %}">Show</a></td>
+                        <td><a href="{% url 'items.edit' val.id %}">Edit</a></td>
+                        <td><a href="{% url 'items.delete' val.id %}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 {% endblock %}

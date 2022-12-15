@@ -8,6 +8,7 @@ Item | CREATE
 <div class="container">
     <h1>Item Create | INVENTORY</h1>
     <hr>
+    <a href="{% url 'items.index' %}" class="btn btn-primary mb-2">BACK</a>
     {% if msg %}
     <div class="alert alert-success" role="alert">
         {{ msg }}

@@ -7,5 +7,20 @@ Item | SHOW
 {% block body_content %}
 <div class="container">
     <h1>Item Show | INVENTORY</h1>
+    <hr>
+    <a href="{% url 'items.index' %}" class="btn btn-primary mb-2">BACK</a>
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ data.title }}</h3>
+        </div>
+        <div class="card-body">
+            <h5>Particular: {{ data.particular }}</h5>
+            <h5>LF: {{ data.lf }}</h5>
+            <h5>Quantity: {{ data.quantity }}</h5>
+            <h5>Price: {{ data.price }}</h5>
+            <h5>Total: {{ data.total }}</h5>
+            <h5>Added Date: {{ data.added_at }}</h5>
+        </div>
+    </div>
 </div>
 {% endblock %}
