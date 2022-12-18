@@ -19,6 +19,22 @@ def item_edit(request, id):
     context = {"data": data}
     return render(request, "items/edit.html", context)
 
+def item_update(request):
+    if request.method == "POST":
+        item_obj = Item.objects.get(id=request.POST.get("id"))
+        user = AppUser.objects.get(id=1)
+        item_obj.title = request.POST.get("title")
+        item_obj.particular = request.POST.get("particular")
+        item_obj.lf = request.POST.get("lf")
+        item_obj.price = request.POST.get("price")
+        item_obj.quantity = request.POST.get("quantity")
+        item_obj.total = request.POST.get("total")
+        item_obj.added_at = datetime.now()
+        item_obj.user = user
+        item_obj.save()
+
+    return redirect("items.index")
+
 def item_delete(request, id):
     data = Item.objects.get(id=id)
     data.delete()
@@ -40,7 +56,6 @@ def item_create(request):
         item_obj.user = user
         item_obj.save()
         context.setdefault("msg", "Item Created Successfully")
-        # item = Item(title=title, particular=particular)
     return render(request, "items/create.html", context)
 
 def user_login(request):
