@@ -7,6 +7,9 @@ class AppUser(models.Model):
     contact = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.full_name
+
     class Meta:
         db_table = "app_users"
 
@@ -19,6 +22,9 @@ class Item(models.Model):
     total = models.FloatField(max_length=200)
     added_at = models.DateTimeField(null=True, blank=True)
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
 
     class Meta:
         db_table = "app_items"
