@@ -105,9 +105,9 @@ def user_register(request):
         user.save()
         context.setdefault("msg", "Registered Successfully")
         send_mail(
-            "User Registration",
-            "Congratulations! Your account has been created.",
-            "c4crypt@gmail.com",
-            [user.email]
+            "User Registration", # subject
+            "Congratulations! Your account has been created.", # message
+            "c4crypt@gmail.com", # sender
+            [user.email] # receiver - must be list because we need to do cc and bcc
         )
     return render(request, "users/register.html", context)
